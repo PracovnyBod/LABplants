@@ -30,7 +30,8 @@ u_send_string = num2str(u_send);
 
 % Set up the plant input values
 
-u_prevod_vals = 0:4:36;
+% u_prevod_vals = 0:4:36;
+u_prevod_vals = 0:4:36+8;
 
 sstime_width = 15;
 
