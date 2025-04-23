@@ -11,7 +11,7 @@ clear all
 
 
 % Define serial port parameters
-serPort = serial('COM3', 'BaudRate', 115200, 'Timeout', 5);
+serPort = serial('COM7', 'BaudRate', 115200, 'Timeout', 5);
 
 % Open the serial port
 fopen(serPort);
@@ -32,9 +32,9 @@ u_send_string = num2str(u_send);
 
 T_start = 0;
 
-T_sample =    0.06;      % [sec]
+T_sample =    0.05;      % [sec]
 
-T_stop =      30.0;      % [sec]
+T_stop =      20.0;      % [sec]
 
 
 % ----------------------------------
@@ -55,9 +55,9 @@ clf;
 
 % Data save
 
-DateString = convertCharsToStrings(datestr(datetime('now'), "yyyy_mm_dd_HH_MM_ss"))
+DateString = convertCharsToStrings(datestr(datetime('now'), "yyyy_mm_dd_HH_MM_ss"));
 
-datafileID = fopen("./dataRepo/" + "dataFile_" + DateString +".txt"','w');
+datafileID = fopen("./dataRepo/" + "dataFile_" + DateString +".txt",'w');
 
 % ----------------------------------
 % ----------------------------------
@@ -150,7 +150,8 @@ while true
         e_int_old = e_int;
  
  
-        u = 0.4 * e  +  0.1 * e_int + 0.005 * e_der;
+        % u = 0.4 * e  +  0.1 * e_int + 0.005 * e_der;
+        u = 0.5 * e  +  0.4 * e_int + 0.04 * e_der;
         u = round(u);
 
         % ----------------------------------
